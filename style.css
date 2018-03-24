@@ -1,0 +1,15 @@
+#astahub_welcome_dashboard .inside {
+	padding-bottom: 0;
+}
+
+.awd-actions {
+	border-top: 1px solid #eee;
+	padding: 0;
+	margin: 0 -11px;
+}
+
+.awd-actions a {
+	display: inline-block;
+	padding: 10px 23px 10px 15px;    
+    border-right: 1px solid #eee;
+}
