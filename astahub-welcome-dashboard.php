@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Astahub - Welcome Dashboard
-Plugin URI: 
+Plugin URI: https://github.com/astahub/astahub-welcome-dashboard
 Description: Astahub default welcome widget on admin dashboard.
 Author: harisrozak
-Author URI: 
+Author URI: https://github.com/harisrozak
 Version: 0.1
 Text Domain: astahub-welcome-dashboard
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
