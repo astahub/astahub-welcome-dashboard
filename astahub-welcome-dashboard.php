@@ -48,10 +48,9 @@ function awd_display() {
 
 /**
  * Capture user login and add it as timestamp in user meta data
- *
  */ 
 function awd_record_last_login( $user_login, $user ) {
-    $last_login = get_the_author_meta('last_login');
+    $last_login = get_user_meta( $user->ID, 'last_login_current', true );
     
     if($last_login) {
         update_user_meta( $user->ID, 'last_login', $last_login );
