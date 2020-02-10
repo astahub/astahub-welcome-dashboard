@@ -69,13 +69,28 @@ add_action( 'wp_login', 'awd_record_last_login', 10, 2 );
 function awd_string_last_login() { 
     $user = wp_get_current_user();
     $last_login = get_user_meta($user->ID, 'last_login', true);
-    $icon = '<span class="dashicons dashicons-backup"></span>';
-
+    
+    // last login
     if($last_login) {
+        $icon = '<span class="dashicons dashicons-backup"></span>';
         printf('<p>%s Your last login: %s</p>', $icon, date('d F Y', $last_login) );    
     }
     else {
-        echo "<p>This is your first login!</p>";   
+        $icon = '<span class="dashicons dashicons-backup"></span>';
+        printf('<p>%s This is your first login</p>', $icon);
+    }
+
+    // users info
+    if(current_user_can('manage_options')) {
+        $icon = '<span class="dashicons dashicons-groups"></span>';
+        $count_users = count_users();
+
+        printf(
+            '<p>%s You have %s total user(s) <a href="%s">[Show Me]</a></p>', 
+            $icon, 
+            $count_users['total_users'],
+            admin_url( 'users.php' )
+        );
     }
 } 
 
@@ -84,7 +99,13 @@ function awd_string_last_login() {
  */
 function awd_user_actions() {
 ?>
-    <p class="awd-actions">
+    <p class="awd-actions">        
+        <?php if(current_user_can('manage_options')): ?>
+            <a href="<?php echo admin_url( 'user-new.php' ); ?>">
+                <span class="dashicons dashicons-admin-users"></span> Add User
+            </a>
+        <?php endif ?>
+
         <a href="<?php echo admin_url( 'profile.php' ); ?>">
             <span class="dashicons dashicons-edit"></span> Change Password
         </a>
